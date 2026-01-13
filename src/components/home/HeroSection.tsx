@@ -92,10 +92,10 @@ export function HeroSection() {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="text-center"
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white">
                   {currentMessage.headline}
                   <br />
-                  <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-300 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">
                     {currentMessage.highlight}
                   </span>
                 </h1>

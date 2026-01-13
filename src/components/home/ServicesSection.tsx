@@ -95,7 +95,7 @@ export function ServicesSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative glass-card p-8 hover-lift"
+              className="group relative glass-card card-shimmer p-8 hover-lift"
             >
               {/* Icon */}
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">

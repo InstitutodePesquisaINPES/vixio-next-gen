@@ -113,9 +113,9 @@ const Servicos = () => {
             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
               Nossos Serviços
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
               Soluções completas em{" "}
-              <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">
                 tecnologia
               </span>
             </h1>
@@ -220,7 +220,7 @@ const Servicos = () => {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               Pronto para começar seu projeto?
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">

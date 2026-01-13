@@ -30,7 +30,7 @@ export function SectionHeader({
           {badge}
         </span>
       )}
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
         {title}{" "}
         {titleHighlight && (
           <span className="gradient-text">{titleHighlight}</span>

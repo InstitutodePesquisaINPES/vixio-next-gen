@@ -88,7 +88,7 @@ export function WorldsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`group relative glass-card p-8 md:p-10 ${world.borderColor} ${world.hoverBorder} transition-all duration-500`}
+              className={`group relative glass-card card-shimmer p-8 md:p-10 ${world.borderColor} ${world.hoverBorder} transition-all duration-500 hover:-translate-y-2`}
             >
               {/* Glow Effect on Hover */}
               <div
