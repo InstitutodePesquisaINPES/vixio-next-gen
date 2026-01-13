@@ -3,96 +3,364 @@ import { motion } from "framer-motion";
 import { 
   ArrowRight, Brain, Database, LineChart, Cpu, Code2, 
   Layers, GitBranch, ChevronRight, CheckCircle2, BarChart3,
-  Sparkles, Target, Zap, Users, Award, TrendingUp
+  Sparkles, Target, Zap, Users, Award, TrendingUp, Cog,
+  Shield, FileText, BookOpen, Lightbulb, Network, Binary,
+  Workflow, FlaskConical, Gauge, Eye, AlertCircle, Timer
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/section-header";
 
-const services = [
+const coreCapabilities = [
   {
     icon: Database,
     title: "Engenharia de Dados",
-    description: "Pipelines robustos, ETL automatizado e data lakes escaláveis para preparar sua infraestrutura.",
-    features: ["Data Warehousing", "ETL/ELT Pipelines", "Data Quality", "Cloud Integration"]
+    description: "Arquiteturas de dados modernas e escaláveis que formam a fundação para análises avançadas e modelos de ML.",
+    features: [
+      "Data Lakes & Lakehouses com Delta Lake e Apache Iceberg",
+      "Pipelines ETL/ELT com Apache Airflow, dbt e Prefect",
+      "Streaming em tempo real com Kafka e Apache Flink",
+      "Data Quality frameworks com Great Expectations",
+      "Orquestração e observabilidade de pipelines",
+      "Modelagem dimensional e Data Vault 2.0"
+    ],
+    technologies: ["Snowflake", "Databricks", "BigQuery", "Redshift", "dbt", "Airflow"]
   },
   {
     icon: Brain,
-    title: "Machine Learning",
-    description: "Modelos preditivos e classificatórios customizados para resolver problemas complexos do seu negócio.",
-    features: ["Modelos Supervisionados", "Deep Learning", "NLP & Visão Computacional", "MLOps"]
-  },
-  {
-    icon: LineChart,
-    title: "Análise Exploratória",
-    description: "Investigação profunda dos dados para descobrir padrões ocultos e oportunidades estratégicas.",
-    features: ["Análise Estatística", "Visualização Avançada", "Correlações", "Segmentação"]
+    title: "Machine Learning & Deep Learning",
+    description: "Desenvolvimento de modelos preditivos, classificatórios e sistemas de recomendação com técnicas state-of-the-art.",
+    features: [
+      "Modelos supervisionados: XGBoost, LightGBM, CatBoost, Random Forest",
+      "Deep Learning: CNNs, RNNs, Transformers, GANs",
+      "NLP avançado: BERT, GPT fine-tuning, Embeddings semânticos",
+      "Computer Vision: detecção, segmentação, OCR",
+      "Sistemas de recomendação híbridos",
+      "AutoML e otimização de hiperparâmetros"
+    ],
+    technologies: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "MLflow"]
   },
   {
     icon: Cpu,
-    title: "IA Generativa",
-    description: "Soluções com LLMs, chatbots inteligentes e automação de processos com IA de última geração.",
-    features: ["Chatbots Customizados", "Geração de Conteúdo", "RAG Systems", "Fine-tuning"]
+    title: "IA Generativa & LLMs",
+    description: "Implementação de soluções com Large Language Models para automação inteligente e geração de conteúdo.",
+    features: [
+      "Chatbots empresariais com RAG (Retrieval Augmented Generation)",
+      "Fine-tuning de modelos para domínios específicos",
+      "Sistemas de busca semântica com embeddings vetoriais",
+      "Agentes autônomos com LangChain e LlamaIndex",
+      "Geração de documentos e relatórios automatizados",
+      "Extração estruturada de informações (NER, IE)"
+    ],
+    technologies: ["OpenAI", "Claude", "Llama", "Pinecone", "Weaviate", "LangChain"]
+  },
+  {
+    icon: LineChart,
+    title: "Análise Exploratória & Estatística",
+    description: "Investigação rigorosa de dados para descoberta de padrões, correlações e insights acionáveis.",
+    features: [
+      "Análise estatística descritiva e inferencial",
+      "Testes de hipóteses e intervalos de confiança",
+      "Análise de séries temporais e sazonalidade",
+      "Segmentação e clusterização (K-means, DBSCAN, hierárquico)",
+      "Análise de coortes e lifetime value",
+      "Causal inference e experimentos A/B"
+    ],
+    technologies: ["Python", "R", "Pandas", "NumPy", "SciPy", "Statsmodels"]
   },
 ];
 
-const technologies = [
-  { name: "Python", category: "Linguagem" },
-  { name: "TensorFlow", category: "Deep Learning" },
-  { name: "PyTorch", category: "Deep Learning" },
-  { name: "Scikit-learn", category: "ML" },
-  { name: "Pandas", category: "Data" },
-  { name: "Apache Spark", category: "Big Data" },
-  { name: "AWS/GCP/Azure", category: "Cloud" },
-  { name: "Docker/K8s", category: "DevOps" },
+const advancedServices = [
+  {
+    icon: Network,
+    title: "MLOps & Model Governance",
+    description: "Infraestrutura completa para deploy, monitoramento e governança de modelos em produção.",
+    items: [
+      "CI/CD para modelos de ML com MLflow e Kubeflow",
+      "Feature Stores (Feast, Tecton) para reutilização",
+      "Model Registry e versionamento",
+      "A/B testing e canary deployments",
+      "Monitoramento de drift e performance",
+      "Explainability (SHAP, LIME) e fairness"
+    ]
+  },
+  {
+    icon: Workflow,
+    title: "Arquitetura de Dados Moderna",
+    description: "Design de arquiteturas robustas seguindo as melhores práticas da indústria.",
+    items: [
+      "Data Mesh e domínios descentralizados",
+      "Medallion Architecture (Bronze/Silver/Gold)",
+      "Event-driven architecture com CDC",
+      "Data Contracts e Schema Registry",
+      "Semantic Layer com dbt Semantic Layer ou Cube",
+      "Data Catalog e descoberta de dados"
+    ]
+  },
+  {
+    icon: FlaskConical,
+    title: "Experimentação & Otimização",
+    description: "Frameworks de experimentação para validação científica de hipóteses de negócio.",
+    items: [
+      "Design de experimentos (A/B, multi-variado)",
+      "Bayesian optimization para parâmetros",
+      "Multi-armed bandits para alocação dinâmica",
+      "Uplift modeling para impacto causal",
+      "Sample size calculation e power analysis",
+      "Sequential testing para decisões rápidas"
+    ]
+  },
 ];
 
-const cases = [
+const useCases = [
   {
-    title: "Previsão de Demanda",
-    industry: "Varejo",
-    result: "40% redução de estoque",
-    description: "Modelo de séries temporais para otimização de inventário em rede varejista."
+    category: "Previsão & Forecasting",
+    icon: TrendingUp,
+    color: "purple",
+    cases: [
+      {
+        title: "Previsão de Demanda",
+        description: "Modelos de séries temporais para otimização de estoque e produção",
+        metrics: ["MAPE < 8%", "40% redução stockout", "25% menos overstock"]
+      },
+      {
+        title: "Churn Prediction",
+        description: "Identificação precoce de clientes em risco de cancelamento",
+        metrics: ["AUC 0.89", "30% redução churn", "2x ROI retenção"]
+      },
+      {
+        title: "Revenue Forecasting",
+        description: "Projeções financeiras com intervalos de confiança",
+        metrics: ["95% acurácia", "Horizonte 12 meses", "Cenários probabilísticos"]
+      }
+    ]
   },
   {
-    title: "Detecção de Fraude",
-    industry: "Fintech",
-    result: "92% de precisão",
-    description: "Sistema de ML em tempo real para identificação de transações fraudulentas."
+    category: "Classificação & Detecção",
+    icon: Shield,
+    color: "emerald",
+    cases: [
+      {
+        title: "Detecção de Fraude",
+        description: "Sistemas em tempo real para identificação de transações suspeitas",
+        metrics: ["Precision 94%", "Recall 87%", "< 100ms latência"]
+      },
+      {
+        title: "Credit Scoring",
+        description: "Modelos de risco de crédito com alta explicabilidade",
+        metrics: ["Gini 0.45", "KS 0.40", "Compliance regulatório"]
+      },
+      {
+        title: "Classificação de Documentos",
+        description: "NLP para categorização automática e extração de informações",
+        metrics: ["F1 0.92", "100k docs/hora", "Multi-idioma"]
+      }
+    ]
   },
   {
-    title: "Recomendação de Produtos",
-    industry: "E-commerce",
-    result: "+35% conversão",
-    description: "Engine de recomendação personalizada baseado em comportamento do usuário."
+    category: "Personalização & Recomendação",
+    icon: Users,
+    color: "rose",
+    cases: [
+      {
+        title: "Sistema de Recomendação",
+        description: "Engines híbridos combinando colaborativo e conteúdo",
+        metrics: ["+35% conversão", "+28% ticket médio", "Real-time"]
+      },
+      {
+        title: "Personalização de Preços",
+        description: "Precificação dinâmica baseada em elasticidade e contexto",
+        metrics: ["+12% margem", "A/B validated", "Fairness garantido"]
+      },
+      {
+        title: "Next Best Action",
+        description: "Otimização de comunicação e oferta por cliente",
+        metrics: ["+45% resposta", "Multi-canal", "Causal impact"]
+      }
+    ]
+  },
+  {
+    category: "Otimização & Operações",
+    icon: Cog,
+    color: "amber",
+    cases: [
+      {
+        title: "Otimização de Rotas",
+        description: "Algoritmos para logística e distribuição eficiente",
+        metrics: ["-20% custos", "-15% tempo", "Dynamic routing"]
+      },
+      {
+        title: "Manutenção Preditiva",
+        description: "Previsão de falhas em equipamentos industriais",
+        metrics: ["95% detecção", "30 dias antecedência", "IoT integrado"]
+      },
+      {
+        title: "Workforce Optimization",
+        description: "Alocação inteligente de recursos e turnos",
+        metrics: ["+20% produtividade", "-15% custos", "Satisfação mantida"]
+      }
+    ]
   },
 ];
 
-const process = [
-  { step: "01", title: "Discovery", description: "Entendimento profundo do problema e dos dados disponíveis" },
-  { step: "02", title: "Preparação", description: "Limpeza, transformação e feature engineering" },
-  { step: "03", title: "Modelagem", description: "Experimentação e seleção do melhor modelo" },
-  { step: "04", title: "Validação", description: "Testes rigorosos e métricas de performance" },
-  { step: "05", title: "Deploy", description: "Implementação em produção com monitoramento" },
+const methodology = [
+  {
+    phase: "01",
+    title: "Discovery & Scoping",
+    duration: "1-2 semanas",
+    description: "Entendimento profundo do problema de negócio e dados disponíveis.",
+    deliverables: [
+      "Problem Statement documentado",
+      "Data Assessment Report",
+      "Success Metrics definidas",
+      "Project Charter e timeline"
+    ],
+    activities: [
+      "Entrevistas com stakeholders",
+      "Análise de fontes de dados",
+      "Benchmark de soluções",
+      "Definição de MVP"
+    ]
+  },
+  {
+    phase: "02",
+    title: "Data Engineering",
+    duration: "2-4 semanas",
+    description: "Preparação e transformação de dados para análise e modelagem.",
+    deliverables: [
+      "Pipelines de ingestão",
+      "Feature Store estruturado",
+      "Documentação de dados",
+      "Quality Gates implementados"
+    ],
+    activities: [
+      "ETL/ELT development",
+      "Feature engineering",
+      "Data profiling",
+      "Validação de qualidade"
+    ]
+  },
+  {
+    phase: "03",
+    title: "Experimentação & Modeling",
+    duration: "3-6 semanas",
+    description: "Desenvolvimento iterativo de modelos com rigor científico.",
+    deliverables: [
+      "Experimentos documentados",
+      "Modelo campeão validado",
+      "Análise de erros",
+      "Interpretabilidade report"
+    ],
+    activities: [
+      "Baseline establishment",
+      "Feature selection",
+      "Hyperparameter tuning",
+      "Cross-validation rigorosa"
+    ]
+  },
+  {
+    phase: "04",
+    title: "Productionization",
+    duration: "2-4 semanas",
+    description: "Deploy do modelo em produção com infraestrutura robusta.",
+    deliverables: [
+      "API de scoring",
+      "Pipeline de inferência",
+      "Dashboards de monitoring",
+      "Runbook operacional"
+    ],
+    activities: [
+      "Containerização",
+      "Integração com sistemas",
+      "Testes de carga",
+      "Setup de alertas"
+    ]
+  },
+  {
+    phase: "05",
+    title: "Monitoring & Iteration",
+    duration: "Contínuo",
+    description: "Monitoramento contínuo e evolução baseada em performance real.",
+    deliverables: [
+      "Reports de performance",
+      "Análises de drift",
+      "Retraining pipelines",
+      "Roadmap de melhorias"
+    ],
+    activities: [
+      "Tracking de métricas",
+      "Detecção de drift",
+      "Champion/challenger",
+      "Feedback loops"
+    ]
+  },
+];
+
+const techStack = [
+  { category: "Languages", items: ["Python", "R", "SQL", "Scala"] },
+  { category: "ML/DL Frameworks", items: ["PyTorch", "TensorFlow", "Scikit-learn", "XGBoost", "LightGBM"] },
+  { category: "Data Engineering", items: ["Spark", "dbt", "Airflow", "Kafka", "Flink"] },
+  { category: "MLOps", items: ["MLflow", "Kubeflow", "Feast", "Great Expectations", "Evidently"] },
+  { category: "Cloud & Infra", items: ["AWS SageMaker", "GCP Vertex AI", "Azure ML", "Databricks", "Snowflake"] },
+  { category: "LLM & GenAI", items: ["LangChain", "LlamaIndex", "Pinecone", "Weaviate", "Hugging Face"] },
+];
+
+const differentials = [
+  {
+    icon: BookOpen,
+    title: "Rigor Científico",
+    description: "Aplicamos metodologia científica rigorosa: hipóteses claras, experimentos controlados, validação estatística e documentação completa de todos os experimentos."
+  },
+  {
+    icon: Cog,
+    title: "Produção-Ready",
+    description: "Não entregamos notebooks - entregamos soluções em produção com APIs, monitoramento, alertas e pipelines de retraining automatizados."
+  },
+  {
+    icon: Lightbulb,
+    title: "Business-First",
+    description: "Métricas de negócio guiam todo o desenvolvimento. ROI é calculado desde o início e validado com experimentos controlados."
+  },
+  {
+    icon: Shield,
+    title: "Governança & Compliance",
+    description: "Modelos documentados, auditáveis e explicáveis. Atendemos requisitos de LGPD, regulatórios financeiros e padrões de fairness."
+  },
+];
+
+const stats = [
+  { value: "150+", label: "Modelos em Produção", description: "Servindo milhões de predições/dia" },
+  { value: "98.5%", label: "SLA de Uptime", description: "Em ambientes críticos de produção" },
+  { value: "R$ 500M+", label: "Valor Gerado", description: "Em receita adicional e economia" },
+  { value: "< 50ms", label: "Latência Média", description: "Para inferência em tempo real" },
 ];
 
 export default function DataScience() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 gradient-dark" />
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-violet-500/15 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 right-1/3 w-80 h-80 bg-fuchsia-500/10 rounded-full blur-3xl" />
         </div>
 
-        {/* Animated Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+        {/* Neural Network Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <svg className="w-full h-full">
+            <pattern id="neural-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="2" fill="rgba(139,92,246,0.3)" />
+              <line x1="30" y1="30" x2="60" y2="30" stroke="rgba(139,92,246,0.15)" strokeWidth="0.5" />
+              <line x1="30" y1="30" x2="45" y2="60" stroke="rgba(139,92,246,0.15)" strokeWidth="0.5" />
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#neural-pattern)" />
+          </svg>
+        </div>
 
         <div className="container-custom relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -105,7 +373,7 @@ export default function DataScience() {
                 <Brain className="w-4 h-4" />
                 Consultoria
                 <ChevronRight className="w-4 h-4" />
-                Data Science
+                Data Science & Machine Learning
               </Link>
             </motion.div>
 
@@ -115,9 +383,9 @@ export default function DataScience() {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight"
             >
-              <span className="text-white">Ciência de</span>{" "}
+              <span className="text-white">Ciência de Dados &</span>{" "}
               <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
-                Dados
+                Machine Learning
               </span>
             </motion.h1>
 
@@ -125,10 +393,11 @@ export default function DataScience() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+              className="mt-6 text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
             >
-              Transformamos dados brutos em inteligência acionável. Machine Learning, 
-              IA e análises avançadas para decisões que impulsionam resultados.
+              Transformamos dados em vantagem competitiva com modelos de ML em produção, 
+              arquiteturas de dados modernas e IA generativa. Do data lake ao modelo em produção 
+              servindo milhões de predições.
             </motion.p>
 
             <motion.div
@@ -143,7 +412,7 @@ export default function DataScience() {
                 asChild
               >
                 <Link to="/contato">
-                  Iniciar Projeto
+                  Iniciar Projeto de ML
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -153,7 +422,7 @@ export default function DataScience() {
                 className="border-purple-500/50 text-lg"
                 asChild
               >
-                <Link to="/portfolio">Ver Cases</Link>
+                <Link to="/portfolio">Ver Cases de Sucesso</Link>
               </Button>
             </motion.div>
 
@@ -162,18 +431,15 @@ export default function DataScience() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+              className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
             >
-              {[
-                { value: "50+", label: "Modelos em Produção" },
-                { value: "98%", label: "Taxa de Sucesso" },
-                { value: "10M+", label: "Registros Processados" },
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 to-violet-400 bg-clip-text text-transparent">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center p-4 rounded-xl bg-muted/20 border border-border/30">
+                  <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-violet-400 bg-clip-text text-transparent">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+                  <div className="text-sm font-medium text-foreground mt-1">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{stat.description}</div>
                 </div>
               ))}
             </motion.div>
@@ -181,36 +447,135 @@ export default function DataScience() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Core Capabilities Section */}
       <section className="section-padding bg-muted/10">
         <div className="container-custom">
           <SectionHeader
-            badge="Serviços"
-            title="Soluções Completas em"
-            titleHighlight="Data Science"
-            description="Do tratamento de dados à IA em produção, oferecemos expertise end-to-end para seus desafios analíticos."
+            badge="Competências Core"
+            title="Expertise Técnica"
+            titleHighlight="Profunda"
+            description="Domínio completo do ciclo de vida de projetos de Data Science, desde a engenharia de dados até modelos em produção."
           />
 
-          <div className="mt-16 grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
+          <div className="mt-16 space-y-8">
+            {coreCapabilities.map((capability, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-card card-shimmer p-8 hover-lift group"
+                className="glass-card p-8 md:p-10"
               >
-                <div className="p-4 rounded-xl bg-purple-500/10 text-purple-400 w-fit group-hover:bg-purple-500/20 transition-colors">
+                <div className="flex flex-col lg:flex-row gap-8">
+                  <div className="lg:w-1/3">
+                    <div className="p-4 rounded-xl bg-purple-500/10 text-purple-400 w-fit mb-4">
+                      <capability.icon className="w-10 h-10" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-foreground">{capability.title}</h3>
+                    <p className="mt-3 text-muted-foreground">{capability.description}</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {capability.technologies.map((tech, idx) => (
+                        <span key={idx} className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-medium border border-purple-500/20">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="lg:w-2/3">
+                    <div className="grid md:grid-cols-2 gap-3">
+                      {capability.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3 p-3 rounded-lg bg-muted/30">
+                          <CheckCircle2 className="w-5 h-5 text-purple-400 mt-0.5 shrink-0" />
+                          <span className="text-sm text-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advanced Services Section */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <SectionHeader
+            badge="Serviços Avançados"
+            title="Além do Modelo:"
+            titleHighlight="Infraestrutura de ML"
+            description="Não entregamos apenas modelos - construímos a infraestrutura completa para ML em escala empresarial."
+          />
+
+          <div className="mt-16 grid md:grid-cols-3 gap-8">
+            {advancedServices.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="glass-card card-shimmer p-8 hover-lift"
+              >
+                <div className="p-4 rounded-xl bg-purple-500/10 text-purple-400 w-fit">
                   <service.icon className="w-8 h-8" />
                 </div>
-                <h3 className="mt-6 text-2xl font-bold text-foreground">{service.title}</h3>
-                <p className="mt-3 text-muted-foreground">{service.description}</p>
-                <div className="mt-6 grid grid-cols-2 gap-2">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="w-4 h-4 text-purple-400" />
-                      {feature}
+                <h3 className="mt-6 text-xl font-bold text-foreground">{service.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
+                <ul className="mt-6 space-y-2">
+                  {service.items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <CheckCircle2 className="w-4 h-4 text-purple-400 mt-0.5 shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases Section */}
+      <section className="section-padding bg-muted/10">
+        <div className="container-custom">
+          <SectionHeader
+            badge="Aplicações"
+            title="Cases de Uso"
+            titleHighlight="Comprovados"
+            description="Soluções implementadas com métricas reais de impacto em diferentes indústrias e domínios."
+          />
+
+          <div className="mt-16 space-y-12">
+            {useCases.map((category, catIndex) => (
+              <motion.div
+                key={catIndex}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: catIndex * 0.1 }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`p-3 rounded-xl bg-${category.color}-500/10`}>
+                    <category.icon className={`w-6 h-6 text-${category.color}-400`} />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground">{category.category}</h3>
+                </div>
+                
+                <div className="grid md:grid-cols-3 gap-6">
+                  {category.cases.map((caseItem, caseIndex) => (
+                    <div key={caseIndex} className="glass-card p-6 hover-lift">
+                      <h4 className="font-bold text-foreground">{caseItem.title}</h4>
+                      <p className="mt-2 text-sm text-muted-foreground">{caseItem.description}</p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {caseItem.metrics.map((metric, idx) => (
+                          <span key={idx} className="px-2 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-medium">
+                            {metric}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -220,102 +585,133 @@ export default function DataScience() {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* Methodology Section */}
       <section className="section-padding">
         <div className="container-custom">
           <SectionHeader
             badge="Metodologia"
             title="Processo"
-            titleHighlight="Científico"
-            description="Seguimos uma metodologia rigorosa para garantir resultados consistentes e escaláveis."
+            titleHighlight="End-to-End"
+            description="Uma metodologia rigorosa e iterativa que garante entrega de valor desde o primeiro sprint."
           />
 
-          <div className="mt-16 relative">
-            {/* Connection Line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-              {process.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative text-center"
-                >
-                  <div className="relative z-10 w-16 h-16 mx-auto rounded-full bg-purple-500/20 border border-purple-500/30 flex items-center justify-center">
-                    <span className="text-xl font-bold text-purple-400">{item.step}</span>
-                  </div>
-                  <h4 className="mt-4 font-semibold text-foreground">{item.title}</h4>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Section */}
-      <section className="section-padding bg-muted/10">
-        <div className="container-custom">
-          <SectionHeader
-            badge="Stack"
-            title="Tecnologias"
-            titleHighlight="Avançadas"
-            description="Utilizamos as ferramentas mais modernas do mercado para entregar soluções de ponta."
-          />
-
-          <div className="mt-12 flex flex-wrap justify-center gap-4">
-            {technologies.map((tech, index) => (
+          <div className="mt-16 space-y-6">
+            {methodology.map((phase, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="glass-card px-6 py-3 hover:border-purple-500/50 transition-all cursor-default"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="glass-card p-6 md:p-8"
               >
-                <div className="text-foreground font-medium">{tech.name}</div>
-                <div className="text-xs text-muted-foreground">{tech.category}</div>
+                <div className="flex flex-col lg:flex-row gap-6">
+                  <div className="lg:w-1/4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-full bg-purple-500/20 border-2 border-purple-500/50 flex items-center justify-center">
+                        <span className="text-xl font-bold text-purple-400">{phase.phase}</span>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-foreground">{phase.title}</h4>
+                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <Timer className="w-4 h-4" />
+                          {phase.duration}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="mt-4 text-sm text-muted-foreground">{phase.description}</p>
+                  </div>
+                  
+                  <div className="lg:w-3/4 grid md:grid-cols-2 gap-6">
+                    <div>
+                      <h5 className="text-sm font-semibold text-purple-400 mb-3">Atividades</h5>
+                      <ul className="space-y-2">
+                        {phase.activities.map((activity, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <div className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                            {activity}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="text-sm font-semibold text-purple-400 mb-3">Entregáveis</h5>
+                      <ul className="space-y-2">
+                        {phase.deliverables.map((deliverable, idx) => (
+                          <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <CheckCircle2 className="w-4 h-4 text-purple-400" />
+                            {deliverable}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Cases Section */}
+      {/* Tech Stack Section */}
+      <section className="section-padding bg-muted/10">
+        <div className="container-custom">
+          <SectionHeader
+            badge="Tecnologias"
+            title="Stack"
+            titleHighlight="Moderno"
+            description="Utilizamos as ferramentas mais avançadas e adotadas pela indústria."
+          />
+
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {techStack.map((category, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="glass-card p-6"
+              >
+                <h4 className="text-sm font-semibold text-purple-400 mb-4">{category.category}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {category.items.map((item, idx) => (
+                    <span key={idx} className="px-3 py-1.5 rounded-lg bg-muted/50 text-foreground text-sm font-medium border border-border/50">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Differentials Section */}
       <section className="section-padding">
         <div className="container-custom">
           <SectionHeader
-            badge="Cases"
-            title="Resultados"
-            titleHighlight="Comprovados"
-            description="Projetos reais que geraram impacto mensurável para nossos clientes."
+            badge="Por que Nós"
+            title="Nossos"
+            titleHighlight="Diferenciais"
+            description="O que nos diferencia de outras consultorias de Data Science."
           />
 
-          <div className="mt-16 grid md:grid-cols-3 gap-8">
-            {cases.map((item, index) => (
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {differentials.map((diff, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-card card-shimmer p-8 hover-lift group"
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className="glass-card p-6 text-center hover-lift"
               >
-                <div className="flex items-center gap-2 text-sm text-purple-400 font-medium">
-                  <Sparkles className="w-4 h-4" />
-                  {item.industry}
+                <div className="w-14 h-14 mx-auto rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+                  <diff.icon className="w-7 h-7 text-purple-400" />
                 </div>
-                <h3 className="mt-4 text-xl font-bold text-foreground">{item.title}</h3>
-                <p className="mt-2 text-muted-foreground">{item.description}</p>
-                <div className="mt-6 pt-4 border-t border-border/50">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-green-400" />
-                    <span className="text-lg font-bold text-green-400">{item.result}</span>
-                  </div>
-                </div>
+                <h4 className="font-bold text-foreground">{diff.title}</h4>
+                <p className="mt-2 text-sm text-muted-foreground">{diff.description}</p>
               </motion.div>
             ))}
           </div>
@@ -336,17 +732,17 @@ export default function DataScience() {
             <div className="relative z-10">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-400 text-sm font-medium mb-6">
                 <Zap className="w-4 h-4" />
-                Pronto para começar?
+                Pronto para transformar dados em resultados?
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Transforme seus dados em{" "}
+                Vamos construir sua{" "}
                 <span className="bg-gradient-to-r from-purple-400 to-violet-400 bg-clip-text text-transparent">
-                  vantagem competitiva
+                  infraestrutura de ML
                 </span>
               </h2>
               <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-lg">
-                Nossa equipe de cientistas de dados está pronta para entender seu desafio 
-                e propor soluções que geram resultados reais.
+                Nossa equipe de cientistas de dados e engenheiros de ML está pronta 
+                para transformar seus dados em modelos em produção que geram valor real.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button
@@ -355,7 +751,7 @@ export default function DataScience() {
                   asChild
                 >
                   <Link to="/contato">
-                    Agendar Consultoria Gratuita
+                    Agendar Discovery Call
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -365,7 +761,7 @@ export default function DataScience() {
                   className="border-purple-500/50"
                   asChild
                 >
-                  <Link to="/consultoria">Ver Outras Áreas</Link>
+                  <Link to="/consultoria">Explorar Outras Áreas</Link>
                 </Button>
               </div>
             </div>
