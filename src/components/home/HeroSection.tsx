@@ -154,7 +154,7 @@ export function HeroSection() {
             >
               <Link to="/consultoria">
                 <Brain className="mr-2 h-5 w-5" />
-                Ciência de Dados
+                Consultoria & Data Science
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
