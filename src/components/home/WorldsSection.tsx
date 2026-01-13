@@ -69,7 +69,7 @@ export function WorldsSection() {
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/50 bg-muted/30 text-muted-foreground text-sm font-medium">
             Dois Mundos, Uma Solução
           </span>
-          <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-bold">
+          <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-bold text-white">
             Explore nossos{" "}
             <span className="gradient-text">universos</span>
           </h2>

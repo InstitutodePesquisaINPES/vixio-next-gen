@@ -103,8 +103,8 @@ export default function SistemasIndex() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
           >
-            Sistemas{" "}
-            <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-300 bg-clip-text text-transparent">
+            <span className="text-white">Sistemas</span>{" "}
+            <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">
               Inteligentes
             </span>
           </motion.h1>
