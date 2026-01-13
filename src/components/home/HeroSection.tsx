@@ -44,14 +44,18 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-8 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
+            className="mt-8 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-foreground"
           >
-            <span className="text-foreground">Transforme </span>
-            <span className="gradient-text">dados</span>
-            <span className="text-foreground"> em</span>
+            Transforme{" "}
+            <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-300 bg-clip-text text-transparent">
+              dados
+            </span>{" "}
+            em
             <br />
-            <span className="text-foreground">decisões </span>
-            <span className="gradient-text">estratégicas</span>
+            decisões{" "}
+            <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-300 bg-clip-text text-transparent">
+              estratégicas
+            </span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -86,7 +90,7 @@ export function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="px-8 py-6 text-lg border-border/50 hover:bg-secondary"
+              className="px-8 py-6 text-lg border-primary/50 text-foreground hover:bg-primary/10"
               asChild
             >
               <Link to="/portfolio">
@@ -109,7 +113,7 @@ export function HeroSection() {
               { value: "99%", label: "Taxa de Satisfação" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text">
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-400 via-purple-500 to-purple-300 bg-clip-text text-transparent">
                   {stat.value}
                 </div>
                 <div className="mt-1 text-sm text-muted-foreground">
