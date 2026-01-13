@@ -148,9 +148,9 @@ export function WorldsSection() {
           </p>
         </motion.div>
 
-        {/* First Row - 2 Main Blocks */}
-        <div className="grid lg:grid-cols-2 gap-6 mb-6">
-          {worlds.slice(0, 2).map((world, index) => (
+        {/* First Row - 3 Main Blocks */}
+        <div className="grid lg:grid-cols-3 gap-6 mb-6">
+          {[worlds[0], worlds[1], worlds[4]].map((world, index) => (
             <motion.div
               key={world.id}
               initial={{ opacity: 0, y: 40 }}
@@ -220,9 +220,9 @@ export function WorldsSection() {
           ))}
         </div>
 
-        {/* Second Row - 3 Secondary Blocks */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {worlds.slice(2).map((world, index) => (
+        {/* Second Row - 2 Secondary Blocks */}
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {[worlds[2], worlds[3]].map((world, index) => (
             <motion.div
               key={world.id}
               initial={{ opacity: 0, y: 40 }}

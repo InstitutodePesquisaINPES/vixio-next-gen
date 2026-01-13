@@ -1,34 +1,34 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronDown, BarChart3, Code2 } from "lucide-react";
+import { ArrowRight, ChevronDown, Brain, Code2, GraduationCap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const heroMessages = [
   {
-    headline: "Dados que",
-    highlight: "decidem negócios",
-    description: "Ciência de dados e bioestatística aplicadas para decisões baseadas em evidências.",
+    headline: "Ciência que",
+    highlight: "revela insights",
+    description: "Data Science, bioestatística e machine learning para decisões baseadas em evidências científicas.",
   },
   {
     headline: "Sistemas que",
-    highlight: "resolvem problemas",
-    description: "Soluções personalizadas, modernas e ágeis para automatizar sua operação.",
+    highlight: "transformam operações",
+    description: "Engenharia de sistemas inteligentes sob medida para automatizar e otimizar sua organização.",
   },
   {
-    headline: "Consultoria que",
-    highlight: "transforma resultados",
-    description: "Planejamento estratégico e análises avançadas para crescimento sustentável.",
+    headline: "Educação que",
+    highlight: "eleva competências",
+    description: "Capacitação executiva, diagnóstico organizacional e formação para maturidade em dados.",
   },
   {
-    headline: "Tecnologia que",
-    highlight: "conecta pessoas",
-    description: "Secretária eletrônica WhatsApp, gestão de atendimento e muito mais.",
+    headline: "Plataformas que",
+    highlight: "escalam negócios",
+    description: "Sistemas SaaS prontos para uso imediato: FuneralLog, VeloG, TFD360 e ClinicFlow.",
   },
   {
-    headline: "Inteligência que",
-    highlight: "antecipa tendências",
-    description: "Machine learning e IA para prever cenários e otimizar processos.",
+    headline: "Código que",
+    highlight: "gera valor",
+    description: "Marketplace de sistemas, APIs e arquiteturas profissionais para licenciamento e white label.",
   },
 ];
 
@@ -77,7 +77,7 @@ export function HeroSection() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium backdrop-blur-sm">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Sistemas Inteligentes & Ciência de Dados
+              Ciência • Sistemas • Educação • Plataformas • Marketplace
             </span>
           </motion.div>
 
@@ -145,28 +145,39 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 flex-wrap"
           >
             <Button
               size="lg"
-              className="group bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-6 text-lg shadow-lg shadow-blue-500/20"
+              className="group bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-5 text-base shadow-lg shadow-blue-500/20"
               asChild
             >
               <Link to="/consultoria">
-                <BarChart3 className="mr-2 h-5 w-5" />
-                Consultoria & Data
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <Brain className="mr-2 h-5 w-5" />
+                Ciência de Dados
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button
               size="lg"
-              className="group gradient-primary text-primary-foreground px-8 py-6 text-lg glow-primary"
+              className="group gradient-primary text-primary-foreground px-6 py-5 text-base glow-primary"
               asChild
             >
               <Link to="/sistemas">
                 <Code2 className="mr-2 h-5 w-5" />
-                Sistemas Inteligentes
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                Engenharia de Sistemas
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              className="group bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-5 text-base shadow-lg shadow-rose-500/20"
+              asChild
+            >
+              <Link to="/educacao">
+                <GraduationCap className="mr-2 h-5 w-5" />
+                Educação Corporativa
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
           </motion.div>
