@@ -28,10 +28,10 @@ export function CTASection() {
 
           {/* Headline */}
           <h2 className="mt-6 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-            <span className="text-foreground">Vamos transformar </span>
+            <span className="text-white">Vamos transformar </span>
             <span className="gradient-text">seus dados</span>
             <br />
-            <span className="text-foreground">em </span>
+            <span className="text-white">em </span>
             <span className="gradient-text">resultados</span>
           </h2>
 

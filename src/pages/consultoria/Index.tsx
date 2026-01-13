@@ -129,7 +129,7 @@ export default function ConsultoriaIndex() {
               >
                 <Link
                   to={area.link}
-                  className="group block glass-card p-8 hover-lift transition-all duration-300 hover:border-blue-500/50"
+                  className="group block glass-card card-shimmer p-8 hover-lift transition-all duration-300 hover:border-blue-500/50"
                 >
                   <div className="flex items-start gap-6">
                     <div className="p-4 rounded-xl bg-blue-500/10 text-blue-400 group-hover:bg-blue-500/20 transition-colors">

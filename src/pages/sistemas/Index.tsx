@@ -160,7 +160,7 @@ export default function SistemasIndex() {
               >
                 <Link
                   to={sistema.link}
-                  className="group relative block glass-card p-6 h-full hover-lift transition-all duration-300 hover:border-primary/50"
+                  className="group relative block glass-card card-shimmer p-6 h-full hover-lift transition-all duration-300 hover:border-primary/50"
                 >
                   {sistema.hot && (
                     <span className="absolute -top-2 -right-2 px-2 py-1 rounded-full bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold">
@@ -211,7 +211,7 @@ export default function SistemasIndex() {
               Solução Personalizada
             </div>
             
-            <h2 className="text-3xl md:text-4xl font-bold">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               Não encontrou o que procura?
             </h2>
             

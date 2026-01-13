@@ -53,9 +53,9 @@ const Sobre = () => {
             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-primary/10 text-primary border border-primary/20">
               Sobre a Vixio
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
               Transformando o futuro com{" "}
-              <span className="bg-gradient-to-r from-purple-400 via-purple-500 to-purple-300 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-300 bg-clip-text text-transparent">
                 tecnologia
               </span>
             </h1>

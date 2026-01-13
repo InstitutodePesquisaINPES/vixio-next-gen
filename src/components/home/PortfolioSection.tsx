@@ -78,7 +78,7 @@ export function PortfolioSection() {
             <motion.div
               key={project.id}
               variants={itemVariants}
-              className="group relative glass-card overflow-hidden hover-lift"
+              className="group relative glass-card card-shimmer overflow-hidden hover-lift"
             >
               {/* Image */}
               <div className="relative h-56 overflow-hidden">
